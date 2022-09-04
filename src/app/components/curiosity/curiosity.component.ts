@@ -25,7 +25,7 @@ export class CuriosityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.asteroidsService.getCuriosityImageOfTheDay(this.currentDate).subscribe(retour => {this.curiosityImages = retour; console.log(retour.photos[0]['img_src'])});
+    this.asteroidsService.getCuriosityImageOfTheDay(this.currentDate).subscribe(retour => {this.curiosityImages = retour});
   }
 
 }
