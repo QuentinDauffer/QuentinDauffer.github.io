@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { AsteroidsListComponent } from './components/asteroids-list/asteroids-list.component';
@@ -24,6 +25,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CuriosityComponent } from './components/curiosity/curiosity.component';
 import { AsteroidFormComponent } from './components/asteroid-form/asteroid-form.component';
+import { CuriosityImageListComponent } from './components/curiosity-image-list/curiosity-image-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AsteroidFormComponent } from './components/asteroid-form/asteroid-form.
     TopBarComponent,
     DashboardComponent,
     CuriosityComponent,
-    AsteroidFormComponent
+    AsteroidFormComponent,
+    CuriosityImageListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +54,13 @@ import { AsteroidFormComponent } from './components/asteroid-form/asteroid-form.
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatGridListModule,
     MatPaginatorModule,
     RouterModule.forRoot([
       { path: '', component: DashboardComponent },
       { path: 'asteroids', component: AsteroidsListComponent },
       { path: 'asteroidform', component: AsteroidFormComponent },
+      { path: 'curiosityimages', component: CuriosityImageListComponent },
     ]),
   ],
   providers: [HttpClientModule],

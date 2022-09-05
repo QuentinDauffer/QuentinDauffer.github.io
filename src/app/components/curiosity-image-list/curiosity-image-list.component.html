@@ -1,0 +1,8 @@
+<div *ngIf="curiosityImages">
+    <mat-grid-list cols="4" rowHeight="2:1">
+        <div *ngFor="let photo of curiosityImages.photos">
+            <mat-grid-tile><img mat-card-lg-image *ngIf="curiosityImages" src="{{ photo['img_src'] }}"></mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>
+
