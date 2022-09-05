@@ -13,6 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { AsteroidsListComponent } from './components/asteroids-list/asteroids-list.component';
@@ -44,6 +48,10 @@ import { AsteroidFormComponent } from './components/asteroid-form/asteroid-form.
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatPaginatorModule,
     RouterModule.forRoot([
       { path: '', component: DashboardComponent },
       { path: 'asteroids', component: AsteroidsListComponent },

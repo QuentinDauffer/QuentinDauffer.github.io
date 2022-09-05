@@ -1,11 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
-import { AsteroidsService } from '../../services/asteroids.service';
+import { Asteroid, AsteroidsService } from '../../services/asteroids.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
-export interface Asteroid {
-  element_count: string,
-  near_earth_objects: any,
+export interface AsteroidData {
+  id: number;
+  name: string;
+  is_potentially_hazardous_asteroid: boolean;
+  is_sentry_object: boolean;
 }
 
 @Component({
@@ -14,8 +19,12 @@ export interface Asteroid {
   styleUrls: ['./asteroids-list.component.scss']
 })
 export class AsteroidsListComponent implements OnInit {
+
+  @ViewChild(MatPaginator) 
+  paginator!: MatPaginator;
+
+  dataSource!: MatTableDataSource<AsteroidData>;
   dates: any;
-  asteroidsList!: any;
   displayedColumns: string[] = ['id', 'name', 'potentially_hazardous', 'is_sentry'];
   
   startDate: string;
@@ -29,15 +38,20 @@ export class AsteroidsListComponent implements OnInit {
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0');
       var yyyy = today.getFullYear();
-  
       var currentDate = yyyy + '-' + mm + '-' + dd;
 
       let routeParams = this.route.snapshot.paramMap;
       this.startDate = routeParams.get('startDate') ?? currentDate;
       this.endDate = routeParams.get('endDate') ?? currentDate;
+
+      let asteroidsList: AsteroidData[] = [];
+      this.asteroidsService.getAsteroidsList(this.startDate, this.endDate).subscribe(retour => {
+        asteroidsList = [].concat.apply([], Object.values(retour.near_earth_objects));
+        this.dataSource = new MatTableDataSource<AsteroidData>(asteroidsList);
+        this.dataSource.paginator = this.paginator;
+      });
     }
 
   ngOnInit() {
-    this.asteroidsService.getAsteroidsList(this.startDate, this.endDate).subscribe(retour => {this.dates = Object.keys(retour.near_earth_objects); this.asteroidsList = Object.values(retour.near_earth_objects)});
   }
 }

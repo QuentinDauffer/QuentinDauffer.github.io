@@ -1,3 +1,1 @@
-<div *ngIf="curiosityImages">
-    <img src="{{ curiosityImages.photos[0]['img_src'] }}" alt="Curiosity's image of today">
-</div>
+<img mat-card-lg-image *ngIf="curiosityImages" src="{{ curiosityImages.photos[0]['img_src'] }}" alt="Curiosity's image of today">

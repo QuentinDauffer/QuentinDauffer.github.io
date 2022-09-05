@@ -1,3 +1,18 @@
-<a [routerLink]="['/']">
-    <h1>Dashboard</h1>
-</a>
+<p>
+    <mat-toolbar>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button routerLink="/" mat-menu-item>
+              <span>Home</span>
+            </button>
+            <button routerLink="/asteroidform" mat-menu-item>
+              <span>Search for asteroids</span>
+            </button>
+            <button mat-menu-item>
+              <span>Curiosity images list</span>
+            </button>
+          </mat-menu>
+    </mat-toolbar>
+</p>
