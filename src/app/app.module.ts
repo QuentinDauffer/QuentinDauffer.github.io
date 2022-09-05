@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +24,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CuriosityComponent } from './components/curiosity/curiosity.component';
 import { AsteroidFormComponent } from './components/asteroid-form/asteroid-form.component';
+import { AppRoutingModule } from './app-routing.module';
 import { CuriosityImageListComponent } from './components/curiosity-image-list/curiosity-image-list.component';
 
 @NgModule({
@@ -56,12 +56,7 @@ import { CuriosityImageListComponent } from './components/curiosity-image-list/c
     MatIconModule,
     MatGridListModule,
     MatPaginatorModule,
-    RouterModule.forRoot([
-      { path: '', component: DashboardComponent },
-      { path: 'asteroids', component: AsteroidsListComponent },
-      { path: 'asteroidform', component: AsteroidFormComponent },
-      { path: 'curiosityimages', component: CuriosityImageListComponent },
-    ]),
+    AppRoutingModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
